@@ -1,0 +1,553 @@
+/* ============================================================
+   NLP Odyssey — Design System
+   Warm Editorial / Interactive Museum
+   ============================================================ */
+
+/* ── Fonts ─────────────────────────────────────────────────── */
+/* DM Serif Display loaded via <link> in index.html           */
+
+/* ── Design Tokens ─────────────────────────────────────────── */
+:root {
+  /* Palette */
+  --bg: #F7F5F2;
+  --surface: #FFFFFF;
+  --surface-alt: #ECE8E1;
+  --border: #DDD8CE;
+  --border-strong: #C8C0B2;
+
+  /* Text */
+  --text-primary: #1B1B1B;
+  --text-secondary: #555555;
+  --text-muted: #888880;
+
+  /* Accents */
+  --terracotta: #C65D3B;
+  --terracotta-lt: #E8856A;
+  --terracotta-bg: rgba(198, 93, 59, 0.08);
+  --indigo: #4F5D95;
+  --indigo-lt: #7888BF;
+  --indigo-bg: rgba(79, 93, 149, 0.08);
+  --gold: #C9A227;
+  --gold-lt: #E0BC52;
+  --gold-bg: rgba(201, 162, 39, 0.08);
+  --forest: #3A7D44;
+  --forest-bg: rgba(58, 125, 68, 0.08);
+  --crimson: #A03030;
+  --crimson-bg: rgba(160, 48, 48, 0.08);
+
+  /* Elevation */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 24px 48px rgba(0, 0, 0, 0.10), 0 8px 16px rgba(0, 0, 0, 0.05);
+
+  /* Typography Scale */
+  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Spacing */
+  --section-px: clamp(1.5rem, 5vw, 5rem);
+}
+
+/* ── Reset ──────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Base ───────────────────────────────────────────────────── */
+html,
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  scroll-behavior: auto !important;
+  /* Lenis handles smooth scrolling */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif);
+  line-height: 1.15;
+  color: var(--text-primary);
+  font-weight: 400;
+  /* DM Serif Display looks best at regular weight */
+}
+
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+p {
+  color: var(--text-secondary);
+  max-width: 65ch;
+  line-height: 1.75;
+}
+
+code,
+pre,
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* ── Lenis ──────────────────────────────────────────────────── */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-alt);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--terracotta);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--surface-alt);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 2px;
+}
+
+/* ── Panel (replaces glass-panel) ──────────────────────────── */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+.panel:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+}
+
+.panel-alt {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Chip (replaces glass-pill) ─────────────────────────────── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 100px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.chip:hover {
+  background: var(--surface);
+  border-color: var(--border-strong);
+}
+
+.chip-terracotta {
+  background: var(--terracotta-bg);
+  border-color: rgba(198, 93, 59, 0.25);
+  color: var(--terracotta);
+}
+
+.chip-indigo {
+  background: var(--indigo-bg);
+  border-color: rgba(79, 93, 149, 0.25);
+  color: var(--indigo);
+}
+
+.chip-gold {
+  background: var(--gold-bg);
+  border-color: rgba(201, 162, 39, 0.25);
+  color: var(--gold);
+}
+
+.chip-forest {
+  background: var(--forest-bg);
+  border-color: rgba(58, 125, 68, 0.25);
+  color: var(--forest);
+}
+
+/* ── Section Label ──────────────────────────────────────────── */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+/* ── Divider Line ───────────────────────────────────────────── */
+.divider {
+  width: 3rem;
+  height: 2px;
+  background: var(--terracotta);
+  margin: 1.5rem 0;
+  border-radius: 1px;
+}
+
+.divider-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Callout Box ────────────────────────────────────────────── */
+.callout {
+  padding: 1.25rem 1.5rem;
+  border-radius: 8px;
+  border-left: 3px solid var(--terracotta);
+  background: var(--terracotta-bg);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.callout-indigo {
+  border-left-color: var(--indigo);
+  background: var(--indigo-bg);
+}
+
+.callout-forest {
+  border-left-color: var(--forest);
+  background: var(--forest-bg);
+}
+
+.callout-gold {
+  border-left-color: var(--gold);
+  background: var(--gold-bg);
+}
+
+/* ── Buttons ────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: 8px;
+  background: var(--terracotta);
+  color: #FFFFFF;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 8px rgba(198, 93, 59, 0.25);
+}
+
+.btn-primary:hover {
+  background: var(--terracotta-lt);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(198, 93, 59, 0.30);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.btn-ghost:hover {
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+  background: var(--surface-alt);
+}
+
+/* ── Progress Bar ───────────────────────────────────────────── */
+#hud-progress-line {
+  background: var(--terracotta) !important;
+}
+
+/* ── Code Block ─────────────────────────────────────────────── */
+.code-block {
+  background: #F0EDE8;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  overflow-x: auto;
+}
+
+/* ── Progress Bar (inline) ──────────────────────────────────── */
+.progress-track {
+  width: 100%;
+  height: 6px;
+  background: var(--surface-alt);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--terracotta);
+  transition: width 0.3s ease;
+}
+
+.progress-fill-indigo {
+  background: var(--indigo);
+}
+
+.progress-fill-gold {
+  background: var(--gold);
+}
+
+/* ── Token Buttons ──────────────────────────────────────────── */
+.token-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.token-btn:hover {
+  border-color: var(--indigo);
+  color: var(--indigo);
+  background: var(--indigo-bg);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Timeline ───────────────────────────────────────────────── */
+.timeline-line {
+  border-left: 2px solid var(--border-strong);
+}
+
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--indigo);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.timeline-node:hover .timeline-dot {
+  background: var(--indigo);
+  border-color: var(--indigo);
+  transform: scale(1.3);
+}
+
+/* ── Stopword / Content Word Chips ─────────────────────────── */
+.word-removed {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: var(--crimson-bg);
+  border: 1px solid rgba(160, 48, 48, 0.2);
+  color: var(--crimson);
+  font-weight: 600;
+  text-decoration: line-through;
+  opacity: 0.5;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  transition: all 0.5s ease;
+}
+
+.word-kept {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+/* ── Attention Word ─────────────────────────────────────────── */
+.att-word {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: all 0.35s ease;
+  cursor: pointer;
+  font-family: var(--font-serif);
+}
+
+.att-word:hover {
+  background: var(--surface-alt);
+}
+
+.att-trigger {
+  background: var(--indigo-bg);
+  border-color: rgba(79, 93, 149, 0.4) !important;
+  color: var(--indigo);
+  font-weight: 600;
+}
+
+/* ── Academic Badge ─────────────────────────────────────────── */
+.academic-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+}
+
+/* ── Scroll Hint ────────────────────────────────────────────── */
+.scroll-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.scroll-arrow {
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(to bottom, var(--border-strong), transparent);
+  animation: scroll-pulse 2s ease-in-out infinite;
+}
+
+@keyframes scroll-pulse {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scaleY(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleY(1.2);
+  }
+}
+
+/* ── Section Reveal ─────────────────────────────────────────── */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+/* ── Focus Accessibility ────────────────────────────────────── */
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--indigo);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Reduced Motion ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── HUD-specific overrides ─────────────────────────────────── */
+/* Three.js canvas sits on dark bg; sections float above with light bg */
+.story-section {
+  /* Sections have semi-transparent cream backgrounds */
+  position: relative;
+}
+
+/* Responsive helpers */
+.text-center {
+  text-align: center;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}

@@ -1,0 +1,6 @@
+{
+  "name": "NLP Story: How Language Became Intelligence",
+  "description": "An award-winning, immersive 3D scrolling storytelling experience that teaches Natural Language Processing from raw text to AI intelligence using Three.js, GSAP, and Lenis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
