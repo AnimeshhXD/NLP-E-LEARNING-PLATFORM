@@ -30,3 +30,7 @@ Developed as a student showcase project for the Natural Language Processing cour
    ```
 
 4. Open the application at `http://localhost:3000`.
+
+## Contributors
+* **Mantra** - 50% Contribution
+* **Animeshh** - 50% Contribution

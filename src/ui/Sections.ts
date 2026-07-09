@@ -940,10 +940,12 @@ export class Sections {
 
             <div style="
               margin-top:4rem;
-              font-family:var(--font-mono);font-size:0.65rem;
-              color:#C8C0B2;letter-spacing:0.1em;
+              font-family:var(--font-mono);font-size:0.75rem;
+              color:#888880;letter-spacing:0.05em;
+              text-align:center;
             " class="section-reveal">
-              Student Case Study · Pure Vanilla TS · Three.js · GSAP
+              <div style="margin-bottom:0.5rem;color:#1B1B1B;font-weight:600;">CONTRIBUTORS</div>
+              <div>Mantra (50%) &nbsp;•&nbsp; Animeshh (50%)</div>
             </div>
           </div>
         `;
